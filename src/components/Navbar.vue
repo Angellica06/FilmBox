@@ -40,7 +40,7 @@
 
 <style scoped>
 .logo {
-    background: -webkit-linear-gradient(#eee, #414141);
+    background: -webkit-linear-gradient(#f2f2f2, #4c4c4c);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
