@@ -16,12 +16,6 @@ npm install
 npm run dev
 ```
 
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
 Link do deploy: https://filmbox1.netlify.app/
 
 ![Captura de tela 2025-02-12 184808](https://github.com/user-attachments/assets/63010553-62dc-4f89-b20a-77dcdb315c5b)
