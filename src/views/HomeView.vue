@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
+import Modal from '@/components/Modal.vue';
 
 const API_KEY = '385560baa82312c9c5a26253fbe3fca3';
 const BASE_URL = 'https://api.themoviedb.org/3';
@@ -8,6 +9,9 @@ const LANGUAGE = 'pt-BR';
 
 const movies = ref([]);
 const series = ref([]);
+
+const showModal = ref(false);
+const selectedItem = ref(null);
 
 const getPopularMovies = async () => {
   try {
@@ -31,6 +35,16 @@ const getPopularSeries = async () => {
   }
 };
 
+const openModal = (item) => {
+  selectedItem.value = item;
+  showModal.value = true;
+};
+
+const closeModal = () => {
+  showModal.value = false;
+  selectedItem.value = null;
+};
+
 onMounted(() => {
   getPopularMovies();
   getPopularSeries();
@@ -50,7 +64,7 @@ onMounted(() => {
     <section class="container" id="movies">
       <h1 class="pt-5">Filmes Populares</h1>
       <div class="content pt-3">
-        <div v-for="movie in movies" :key="movie.id" class="card">
+        <div v-for="movie in movies" :key="movie.id" class="card" @click="openModal(movie)">
           <img :src="'https://image.tmdb.org/t/p/w500' + movie.poster_path" :alt="movie.title" />
           <h3 class="p-2">{{ movie.title }}</h3>
         </div>
@@ -58,13 +72,19 @@ onMounted(() => {
 
       <h1 class="pt-5 pb-2">Séries Populares</h1>
       <div class="content pt-3 pb-5">
-        <div v-for="serie in series" :key="serie.id" class="card">
+        <div v-for="serie in series" :key="serie.id" class="card" @click="openModal(serie)">
           <img :src="'https://image.tmdb.org/t/p/w500' + serie.poster_path" :alt="serie.name" />
           <h3 class="p-2">{{ serie.name }}</h3>
         </div>
       </div>
     </section>
   </main>
+
+  <Modal v-if="selectedItem" :show="showModal" :title="selectedItem.title || selectedItem.name"
+    :description="selectedItem.overview || 'Descrição não disponível.'"
+    :image="'https://image.tmdb.org/t/p/w500' + selectedItem.poster_path"
+    :date="selectedItem.release_date || selectedItem.first_air_date" :assessment="selectedItem.vote_average"
+    @closeModal="closeModal" />
 
   <footer class="footer text-center">
     <p>&copy; 2025 FilmBox. Todos os direitos reservados.</p>

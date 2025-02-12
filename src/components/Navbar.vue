@@ -28,6 +28,9 @@
                         <li class="nav-item overflow-hidden">
                             <RouterLink class="nav-link" to="/series">Series</RouterLink>
                         </li>
+                        <li class="nav-item overflow-hidden">
+                            <RouterLink class="nav-link" to="/favoritos">Favoritos</RouterLink>
+                        </li>
                     </ul>
                 </div>
             </div>
