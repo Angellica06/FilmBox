@@ -1,8 +1,8 @@
 <template>
-    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-black">
+    <nav class="navbar shadow navbar-expand-lg fixed-top navbar-light bg-black">
         <div class="container">
             <div class="logo d-flex justify-content-center align-content-center mx-4 pt-1">
-                <h1><a href="#home" class="text-decoration-none logo">FilmBox</a></h1>
+                <h1><RouterLink class="text-decoration-none logo" to="/">FilmBox</RouterLink></h1>
             </div>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
@@ -27,9 +27,6 @@
                         </li>
                         <li class="nav-item overflow-hidden">
                             <RouterLink class="nav-link" to="/series">Series</RouterLink>
-                        </li>
-                        <li class="nav-item overflow-hidden">
-                            <a class="nav-link" href="#habilidades">Favoritos</a>
                         </li>
                     </ul>
                 </div>
@@ -61,7 +58,12 @@
 
 .nav-link:hover {
     color: #fff718;
-    transform: scale(1.06);
+    transform: scale(1.01);
+}
+
+.nav-link:focus, .nav-link:active {
+    color: #fff718 !important;
+    outline: none;
 }
 
 .offcanvas-body,

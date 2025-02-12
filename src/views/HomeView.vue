@@ -15,7 +15,6 @@ const getPopularMovies = async () => {
       params: { api_key: API_KEY, language: LANGUAGE },
     });
     movies.value = response.data.results.slice(0, 5);
-    console.log(movies.value);
   } catch (error) {
     console.error('Erro ao buscar filmes:', error);
   }
@@ -39,31 +38,33 @@ onMounted(() => {
 </script>
 
 <template>
-  <section class="banner" id="home">
-    <div class="banner-content text-light">
-      <h1>Explore os melhores filmes e séries</h1>
-      <p>Encontre os lançamentos mais populares e descubra novas histórias incríveis.</p>
-      <a class="btn" href="#movies">Comece agora <img src="../assets/img/seta-para-baixo.png"></a>
-    </div>
-  </section>
-
-  <section class="container" id="movies">
-    <h1 class="pt-5">Filmes Populares</h1>
-    <div class="content pt-3">
-      <div v-for="movie in movies" :key="movie.id" class="card">
-        <img :src="'https://image.tmdb.org/t/p/w500' + movie.poster_path" :alt="movie.title" />
-        <h3 class="p-2">{{ movie.title }}</h3>
+  <main id="home">
+    <section class="banner">
+      <div class="banner-content text-light">
+        <h1>Explore os melhores filmes e séries</h1>
+        <p>Encontre os lançamentos mais populares e descubra novas histórias incríveis.</p>
+        <a class="btn" href="#movies">Comece agora <img src="../assets/img/seta-para-baixo.png"></a>
       </div>
-    </div>
+    </section>
 
-    <h1 class="pt-5 pb-2">Séries Populares</h1>
-    <div class="content pt-3 pb-5">
-      <div v-for="serie in series" :key="serie.id" class="card">
-        <img :src="'https://image.tmdb.org/t/p/w500' + serie.poster_path" :alt="serie.name" />
-        <h3 class="p-2">{{ serie.name }}</h3>
+    <section class="container" id="movies">
+      <h1 class="pt-5">Filmes Populares</h1>
+      <div class="content pt-3">
+        <div v-for="movie in movies" :key="movie.id" class="card">
+          <img :src="'https://image.tmdb.org/t/p/w500' + movie.poster_path" :alt="movie.title" />
+          <h3 class="p-2">{{ movie.title }}</h3>
+        </div>
       </div>
-    </div>
-  </section>
+
+      <h1 class="pt-5 pb-2">Séries Populares</h1>
+      <div class="content pt-3 pb-5">
+        <div v-for="serie in series" :key="serie.id" class="card">
+          <img :src="'https://image.tmdb.org/t/p/w500' + serie.poster_path" :alt="serie.name" />
+          <h3 class="p-2">{{ serie.name }}</h3>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer class="footer text-center">
     <p>&copy; 2025 FilmBox. Todos os direitos reservados.</p>
@@ -127,41 +128,6 @@ onMounted(() => {
   flex-wrap: wrap;
   gap: 1.4rem;
   justify-content: center;
-}
-
-.card {
-  width: 200px;
-  background-color: transparent;
-  border: 0;
-  color: #fff718;
-}
-
-.card img {
-  width: 100%;
-  border-radius: .5rem;
-}
-
-.footer {
-  background: #000;
-  color: #fff718;
-  padding: 1.2rem;
-}
-
-.footer .social-icons {
-  margin-top: .8rem;
-}
-
-.footer .social-icons a {
-  margin: 0 .6rem;
-}
-
-.footer .social-icons img {
-  width: 30px;
-  transition: transform 0.3s ease;
-}
-
-.footer .social-icons a:hover img {
-  transform: scale(1.2);
 }
 
 @media (max-width: 980px) {
