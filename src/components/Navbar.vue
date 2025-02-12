@@ -23,7 +23,6 @@
                         </li>
                         <li class="nav-item overflow-hidden">
                             <RouterLink class="nav-link" to="/filmes">Filmes</RouterLink>
-
                         </li>
                         <li class="nav-item overflow-hidden">
                             <RouterLink class="nav-link" to="/series">Series</RouterLink>
