@@ -61,7 +61,7 @@ onMounted(() => {
       </div>
     </section>
 
-    <section class="container" id="movies">
+    <section class="container pb-5" id="movies">
       <h1 class="pt-5">Filmes Populares</h1>
       <div class="content pt-3">
         <div v-for="movie in movies" :key="movie.id" class="card" @click="openModal(movie)">
@@ -69,6 +69,7 @@ onMounted(() => {
           <h3 class="p-2">{{ movie.title }}</h3>
         </div>
       </div>
+      <RouterLink class="btn-more mt-1" to="/filmes">Ver mais</RouterLink>
 
       <h1 class="pt-5 pb-2">Séries Populares</h1>
       <div class="content pt-3 pb-5">
@@ -77,6 +78,7 @@ onMounted(() => {
           <h3 class="p-2">{{ serie.name }}</h3>
         </div>
       </div>
+      <RouterLink class="btn-more" to="/series">Ver mais</RouterLink>
     </section>
   </main>
 
@@ -84,7 +86,8 @@ onMounted(() => {
     :description="selectedItem.overview || 'Descrição não disponível.'"
     :image="'https://image.tmdb.org/t/p/w500' + selectedItem.poster_path"
     :date="selectedItem.release_date || selectedItem.first_air_date" :assessment="selectedItem.vote_average"
-    @closeModal="closeModal" />
+    @closeModal="closeModal">
+  </Modal>
 
   <footer class="footer text-center">
     <p>&copy; 2025 FilmBox. Todos os direitos reservados.</p>
@@ -148,6 +151,23 @@ onMounted(() => {
   flex-wrap: wrap;
   gap: 1.4rem;
   justify-content: center;
+}
+
+.btn-more {
+  background-color: #fff718;
+  color: #000;
+  border: none;
+  padding: .6rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.btn-more:hover {
+  transform: scale(1.05);
+  background-color: #ffd700;
 }
 
 @media (max-width: 980px) {

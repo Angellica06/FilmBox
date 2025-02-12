@@ -29,9 +29,22 @@ body {
   border-radius: .5rem;
 }
 
+.card img:hover {
+  transform: scale(1.05);
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
 .search input {
-  width: 400px;
-  margin: .6rem;
+  width: 100%;
+  max-width: 500px;
+  margin: 0.6rem;
+  padding: 0.5rem;
+  font-size: 1rem;
 }
 
 .footer {

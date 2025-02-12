@@ -1,5 +1,6 @@
 <script setup>
 import { defineProps, defineEmits } from 'vue';
+import moment from 'moment';
 
 const props = defineProps({
     show: Boolean,
@@ -7,8 +8,10 @@ const props = defineProps({
     description: String,
     image: String,
     date: String,
-    assessment: String
+    assessment: Number
 });
+
+const date = moment(props.date).format('DD/MM/YYYY');
 
 const emit = defineEmits(['closeModal']);
 
